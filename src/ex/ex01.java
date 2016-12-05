@@ -13,15 +13,34 @@ public class ex01 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner scn = new Scanner(System.in);
-		String n = " ";
-		int[] array = new int[n.length()];
-		for (int i = 0; i < n.length(); i++) {
-			String n2 = n.substring(i, i + 1);			
-			array[i] = Integer.parseInt(n2);
+		String str[] = new String[10];
+		int data1[] = new int[10];
+		int data2[] = new int[10];
+		int data3[] = new int[10];
+		for (int i = 0; i < 10; i++) {
+			str[i] = scn.next();
+			if (str[i].equals("x")) {
+				data1[i] = 10;
+			} 
+			else {
+				data1[i] = str[i].charAt(0) - '0';
+			}
 		}
-		System.out.println(n);
-		for (int i : array) {
-			System.out.print(i + " ");
+		int sum1 = 0, sum2 = 0;
+		for (int i = 0; i < 10; i++) {
+			data2[i] = sum1 + data1[i];
+			sum1 = data2[i];
 		}
+		for (int i = 0; i < 10; i++) {
+			data3[i] = sum2 + data2[i];
+			sum2 = data3[i];
+		}
+
+		if (data3[9] % 11 == 0) {
+			System.out.println("合法");
+		} else {
+			System.out.println("不合法");
+		}
+
 	}
 }
